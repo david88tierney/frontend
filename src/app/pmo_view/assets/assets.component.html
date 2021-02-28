@@ -1,0 +1,67 @@
+<div class="list row" *ngIf="assets">
+    <!-- IF THEY WANT A SEARCH BAR -- WILL HAVE TO TROUBLE SHOOT WHY IT IS NOT PULLING FROM THE DB -->
+     <!-- <div class="col-md-8" style="padding-top: 1rem;">
+       <div class="input-group mb-3">
+         <input
+           type="text"
+           class="form-control"
+           placeholder="Search by Assett"
+           [(ngModel)]="title"
+         />
+         <div class="input-group-append">
+           <button
+             class="btn btn-outline-secondary"
+             type="button"
+             (click)="searchAsset()"
+           >
+             Search
+           </button>
+         </div>
+       </div>
+     </div> -->
+     <div class="col-xl-10" style="padding: 2rem; margin: auto;">
+       <h1 style="display: flex; justify-content: center; padding-bottom: 1rem;">Assets Table</h1>
+       <table class="table table-striped">
+         <thead>
+           <tr>
+             <th scope="col">Title</th>
+             <th scope="col">Asset Number</th>
+             <th scope="col">Date In Service</th>
+             <th scope="col">Description</th>
+             <th scope="col">Tax Cost</th>
+             <th scope="col">Model #</th>
+             <th scope="col">Serial #</th>
+             <th scope="col">Location</th>
+             <th scope="col">Notes</th>
+             <th scope="col">Action</th>
+           </tr>
+         </thead>
+         <tbody 
+         *ngFor="let asset of assets; let i = index"
+         [class.active]="i == currentIndex"
+         (click)="setActiveAsset(asset, i)">
+           <tr>
+             <th>{{ asset.title }}</th>
+             <td>{{ asset.asset_number }}</td>
+             <td>{{ asset.date_in_service }}</td>
+             <td>{{ asset.description }}</td>
+             <td>{{ asset.tax_cost }}</td>
+             <td>{{ asset.model_number }}</td>
+             <td>{{ asset.serial_number }}</td>
+             <td>{{ asset.location }}</td>
+             <td>{{ asset.notes }}</td>
+             <td> <a class="badge badge-warning" routerLink="/assets/{{ asset.id }}">Update</a> </td>
+           </tr>
+         </tbody>
+       </table>
+       <a class="btn btn-primary" routerLink="addAsset"> Add Asset </a>
+
+     </div>
+   </div>
+
+   <div class="container" *ngIf="content">
+    <header class="jumbotron">
+      <p>{{ content }}</p>
+    </header>
+  </div>
+ 

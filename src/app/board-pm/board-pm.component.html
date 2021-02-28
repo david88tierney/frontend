@@ -1,0 +1,56 @@
+<div class="list row" *ngIf="employees">
+    <!-- IF THEY WANT A SEARCH BAR -- WILL HAVE TO TROUBLE SHOOT WHY IT IS NOT PULLING FROM THE DB -->
+      <!-- <div class="col-md-8" style="padding-top: 1rem;">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search by First Name"
+            [(ngModel)]="first_name"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              (click)="searchEmployee()"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div> -->
+      <div class="col-xl-10" style="padding: 2rem;">
+        <h1 style="display: flex; justify-content: center; padding-bottom: 1rem;">Employee Table</h1>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <!-- <th scope="col">#</th> -->
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Contract</th>
+              <th scope="col">Position</th>
+              <!-- <th scope="col">Action</th> -->
+            </tr>
+          </thead>
+          <tbody 
+          *ngFor="let employee of employees">
+            <tr>
+              <!-- <th scope="row">{{ employee.id }}</th> -->
+              <td>{{ employee.first_name }}</td>
+              <td>{{ employee.last_name }}</td>     
+              <td>{{ employee.contract }}</td>
+              <td>{{ employee.position }}</td>
+              <!-- <td> <a class="badge badge-warning" routerLink="/employees/{{ employee.id }}">Update</a> </td> -->
+            </tr>
+          </tbody>
+        </table>
+        <!-- <a class="btn btn-primary" [routerLink]="'/add'">Add Employee</a> -->
+  
+      </div>
+    </div>
+
+    <div class="container" *ngIf="content">
+      <header class="jumbotron">
+        <p>{{ content }}</p>
+      </header>
+    </div>

@@ -1,0 +1,345 @@
+<div class="container" *ngIf="currentEmployee">
+    <div class="col-xl-12 mt-5 mt-lg-0 d-flex align-items-stretch">
+      <div class="submit-form">
+        <div *ngIf="!submitted">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="">Status</label>
+              <select class="form-control" name="status" id="status" [(ngModel)]="currentEmployee.status">
+                <option value="">--Please choose an option--</option>
+                <option value="Active"  >Active</option>
+                <option value="Inactive" >Inactive</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="prefix">Prefix</label>
+              <select class="form-control" name="prefix" id="prefix" [(ngModel)]="currentEmployee.prefix">
+                <option value="">If Applicable</option>
+                <option value="">n/a</option>
+                <option value="Mr">Mr</option>
+                <option value="Ms">Ms</option>
+                <option value="Mrs">Mrs</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="first_name">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="first_name"
+                required
+                [(ngModel)]="currentEmployee.first_name"
+                name="first_name"
+              />
+            </div>
+      
+            <div class="form-group col-md-3">
+              <label for="last_name">Last Name</label>
+              <input
+                class="form-control"
+                id="last_name"
+                required
+                [(ngModel)]="currentEmployee.last_name"
+                name="last_name"
+              />
+            </div>
+    
+            <div class="form-group col-md-3">
+              <label for="suffix">Suffix</label>
+              <select class="form-control" name="suffix" id="suffix" [(ngModel)]="currentEmployee.suffix">
+                <option value="">If Applicable</option>
+                <option value="">n/a</option>
+                <option value="Jr">Jr</option>
+                <option value="Sr">Sr</option>
+                <option value="2nd">2nd</option>
+                <option value="3rd">3rd</option>
+                <option value="4th">4th</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="address">Address</label>
+              <input 
+              type="text"
+              placeholder="Home Address, City, State, ZIP"
+              class="form-control"
+              id="address"
+              required
+              [(ngModel)]="currentEmployee.address"
+              name="address"
+              >
+            </div>
+          </div>
+  
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="mobile_phone">Mobile Phone</label>
+              <input 
+              type="text"
+              class="form-control"
+              placeholder="If Applicable"
+              id="mobile_phone"
+              [(ngModel)]="currentEmployee.mobile_phone"
+              name="mobile_phone">
+            </div>
+  
+            <div class="form-group col-md-4">
+              <label for="work_phone">Work Number</label>
+              <input 
+              type="text"
+              class="form-control"
+              placeholder="If Applicable"
+              id="work_phone"
+              [(ngModel)]="currentEmployee.work_phone"
+              name="work_phone">
+            </div>
+  
+            <div class="form-group col-md-4">
+              <label for="home_phone">Home Phone</label>
+              <input 
+              type="text"
+              class="form-control"
+              placeholder="If Applicable"
+              id="home_phone"
+              [(ngModel)]="currentEmployee.home_phone"
+              name="home_phone">
+            </div>
+          </div>
+  
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="clearance">Clearance</label>
+              <select class="form-control" name="clearance" id="clearance" [(ngModel)]="currentEmployee.clearance">
+                <option value="">If Applicable</option>
+                <option value="n/a">n/a</option>
+                <option value="Public Trust">Public Trust</option>
+                <option value="Interim Secret">Interim Secret</option>
+                <option value="Secret">Secret</option>
+                <option value="Interim Top Secret">Interim Top Secret</option>
+                <option value="Top Secret">Top Secret</option>
+                <option value="DCID SCI">DCID SCI</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="clearance_date">Clearance Date</label>
+              <input
+                class="form-control"
+                id="clearance_date"
+                type="date"
+                [(ngModel)]="currentEmployee.clearance_date"
+                name="clearance_date"
+              />
+            </div>
+      
+            <div class="form-group col-md-4">
+              <label for="clearance_exp_date">Clearance Expiration Date</label>
+              <input
+                class="form-control"
+                id="clearance_exp_date"
+                type="date"
+                [(ngModel)]="currentEmployee.clearance_exp_date"
+                name="clearance_exp_date"
+              />
+            </div>
+          </div>
+  
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="vacation_accrual_base_date">Vacation Accrual Base Date</label>
+            <input
+              class="form-control"
+              id="vacation_accrual_base_date"
+              required
+              type="date"
+              [(ngModel)]="currentEmployee.vacation_accrual_base_date"
+              name="vacation_accrual_base_date"
+            />
+            </div>
+  
+            <div class="form-group col-md-6">
+              <label for="position">Position</label>
+              <input
+                class="form-control"
+                id="position"
+                [(ngModel)]="currentEmployee.position"
+                name="position"
+              />
+            </div>
+          </div>
+  
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="email">Personal Email</label>
+              <input
+                class="form-control"
+                placeholder="If Applicable"
+                id="email"
+                required
+                email
+                [(ngModel)]="currentEmployee.email"
+                name="email"
+              />
+            </div>
+  
+            <div class="form-group col-md-4">
+              <label for="rssi_email">Rssi Email</label>
+              <input
+                class="form-control"
+                placeholder="If Applicable"
+                id="rssi_email"
+                email
+                [(ngModel)]="currentEmployee.rssi_email"
+                name="rssi_email"
+              />
+            </div>
+  
+            <div class="form-group col-md-4">
+              <label for="gov_email">Gov/Site Email</label>
+              <input
+                class="form-control"
+                placeholder="If Applicable"
+                id="gov_email"
+                email
+                [(ngModel)]="currentEmployee.gov_email"
+                name="gov_email"
+              />
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="hire_date">Hire Date</label>
+              <input
+                class="form-control"
+                id="hire_date"
+                required
+                type="date"
+                [(ngModel)]="currentEmployee.hire_date"
+                name="hire_date"
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="termination_date">Termination Date</label>
+              <input
+                class="form-control"
+                id="termination_date"
+                type="date"
+                [(ngModel)]="currentEmployee.termination_date"
+                name="termination_date"
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="work_status">Work Status</label>
+              <select class="form-control" name="work_status" id="work_status" [(ngModel)]="currentEmployee.work_status">
+                <option value="">If Applicable</option>
+                <option value="Full Time">Full Time</option>
+                <option value="Part Time">Part Time</option>
+                <option value="Consultant">Consultant</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="salary">Salary</label>
+              <input 
+                class="form-control"
+                id="salary"
+                required
+
+                [(ngModel)]="currentEmployee.salary"
+                name="salary"
+              /> 
+            </div>
+  
+            <div class="form-group col-md-6">
+              <label for="last_pay_change">Last Pay Change</label>
+              <input 
+                class="form-control"
+                id="last_pay_change"
+                required
+                type="date"
+                [(ngModel)]="currentEmployee.last_pay_change"
+                name="last_pay_change"
+              /> 
+            </div>
+          </div>
+        
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="race">Race</label>
+              <select class="form-control" name="race" id="race" [(ngModel)]="currentEmployee.race">
+                <option value="">If Applicable</option>
+                <option value="">Employee doesn't wish to share.</option>
+                <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
+                <option value="Asian">Asian</option>
+                <option value="Black or African American">Black or African American</option>
+                <option value="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
+                <option value="White">White</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="gender">Gender</label>
+              <select class="form-control" name="gender" id="gender" [(ngModel)]="currentEmployee.gender">
+                <option value="">Select a Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+   
+              </select>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="flsa">FLSA</label>
+              <select class="form-control" name="flsa" id="flsa" [(ngModel)]="currentEmployee.flsa">
+                <option value="">Select a FLSA</option>
+                <option value="Exempt">Exempt</option>
+                <option value="Non-Exempt">Non Exempt</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="remarks">Remarks</label>
+            <input
+              class="form-control"
+              id="remarks"
+              required
+              [(ngModel)]="currentEmployee.remarks"
+              placeholder="If Applicable"
+              name="remarks"
+            />
+          </div>
+          <button class="badge badge-danger mr-2" (click)="deleteEmployee()">
+            Delete
+          </button>
+          <button 
+          class="badge badge-info mr-2"
+          type="submit"
+          (click)="returnToTable()">
+            Go Back
+          </button>
+          <button
+            type="submit"
+            class="badge badge-success"
+            (click)="updateEmployee()"
+          >
+            Update
+          </button>
+          <p>{{ message }}</p>
+        </div>
+      
+        <div *ngIf="!currentEmployee">
+          <br />
+          <p>Cannot access this Employee...</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+    

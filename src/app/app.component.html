@@ -1,0 +1,77 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="app">
+  <nav class="navbar navbar-expand">
+     <!-- logo -->
+     <div class="navbar-brand">
+      <a class="navbar-item">
+        <img src="assets/logo.png" style="height: 50px;">
+      </a>
+    </div>
+    <a href="#" class="navbar-brand">Right Sized Solution, Inc.</a>
+
+
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="/home" class="nav-link" routerLink="home">Home </a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showPMOBoard">
+            <!-- Dropdown Menu for HR-->
+      <div ngbDropdown class="d-inline-block" style="padding-right: 1rem;">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Human Resources</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem routerLink="employees">Employee Tracking</button>
+          <!-- <button ngbDropdownItem routerLink="test">Assign</button> -->
+          <!-- COMING SOON -->
+          <!-- <button ngbDropdownItem>Training & Certs</button> -->
+          <!-- <button ngbDropdownItem>Security & Tracker</button> -->
+        </div>
+      </div>
+      </li>
+      <li class="nav-item" *ngIf="showPMOBoard">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>FA Details</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem routerLink="contracts">Contracts</button>
+            <!-- COMING SOON -->
+            <!-- <button ngbDropdownItem>Funding</button> -->
+            <!-- <button ngbDropdownItem>Program Tracking</button> -->
+            <!-- <button ngbDropdownItem>Open Market</button> -->
+            <!-- <button ngbDropdownItem>Rate Compute</button> -->
+          </div>
+        </div>
+        <!-- <a href="/contracts" class="nav-link" routerLink="contracts">Contracts</a> -->
+      </li>
+      <!-- <li class="nav-item" *ngIf="showPMOBoard">
+        <a href="/assets" class="nav-link" routerLink="assets">Assets</a>
+      </li> -->
+      <li class="nav-item"  *ngIf="showPMBoard">
+        <a href="/pm" class="nav-link" *ngIf="isLoggedIn" routerLink="pm">Employees</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+  </nav>
+  <hr>
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+</div>

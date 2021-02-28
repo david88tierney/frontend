@@ -1,0 +1,113 @@
+<div style="width: 400px; margin: auto;">
+    <div *ngIf="currentAsset" class="edit-form">
+      <h4>Asset</h4>
+      <form>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            [(ngModel)]="currentAsset.title"
+            name="title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="asset_number">Asset Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="asset_number"
+            [(ngModel)]="currentAsset.asset_number"
+            name="asset_number"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            [(ngModel)]="currentAsset.description"
+            name="description"
+          />
+        </div>
+        <div class="form-group">
+          <label for="date_in_service">Date In Service</label>
+          <input
+            type="text"
+            class="form-control"
+            id="date_in_service"
+            [(ngModel)]="currentAsset.date_in_service"
+            name="date_in_service"
+          />
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input
+            type="text"
+            class="form-control"
+            id="location"
+            [(ngModel)]="currentAsset.location"
+            name="location"
+          />
+        </div>
+        <div class="form-group">
+          <label for="model_number">Model Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="model_number"
+            [(ngModel)]="currentAsset.model_number"
+            name="model_number"
+          />
+        </div>
+        <div class="form-group">
+          <label for="serial_number">Serial Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="serial_number"
+            [(ngModel)]="currentAsset.serial_number"
+            name="serial_number"
+          />
+        </div>
+        <div class="form-group">
+          <label for="tax_cost">Tax Cost</label>
+          <input
+            type="text"
+            class="form-control"
+            id="tax_cost"
+            [(ngModel)]="currentAsset.tax_cost"
+            name="tax_cost"
+          />
+        </div>
+        <div class="form-group">
+          <label for="notes">Notes</label>
+          <textarea
+            type="text"
+            class="form-control"
+            id="notes"
+            [(ngModel)]="currentAsset.notes"
+            name="notes"
+          ></textarea>
+        </div>
+      </form>
+      <button class="badge badge-danger mr-2" (click)="deleteAsset()">
+        Delete
+      </button>
+      <button
+        type="submit"
+        class="badge badge-success"
+        (click)="updateAsset()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentAsset">
+      <br/>
+      <p>Cannot access this Asset...</p>
+    </div>
+  </div>

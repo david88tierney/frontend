@@ -1,0 +1,218 @@
+<div class="container" style="margin: auto;">
+    <div *ngIf="currentContract" class="edit-form">
+      <h4>Update Contract Details</h4>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="status">Status</label>
+            <select class="form-control" name="status" id="status" [(ngModel)]="currentContract.status">
+              <option value="">--Please choose an option--</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="name">Contract Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              [(ngModel)]="currentContract.name"
+              name="name"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="short_name">Short Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="short_name"
+              [(ngModel)]="currentContract.short_name"
+              name="short_name"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="number">Contract Number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="number"
+              [(ngModel)]="currentContract.number"
+              name="number"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="contract_vehicle">Contract Vehicle</label>
+            <input
+              type="text"
+              class="form-control"
+              id="contract_vehicle"
+              [(ngModel)]="currentContract.contract_vehicle"
+              name="contract_vehicle"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="POP_begin">POP Begin</label>
+            <input
+              type="date"
+              class="form-control"
+              id="POP_begin"
+              [(ngModel)]="currentContract.POP_begin"
+              name="POP_begin"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="POP_end">POP End</label>
+            <input
+              type="date"
+              class="form-control"
+              id="POP_end"
+              [(ngModel)]="currentContract.POP_end"
+              name="POP_end"
+            />
+          </div>
+
+        </div>
+       
+       <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="point_of_contact">Point of Contact</label>
+          <input
+            type="text"
+            class="form-control"
+            id="point_of_contact"
+            [(ngModel)]="currentContract.point_of_contact"
+            name="point_of_contact"
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="poc_email">Point of Contract Email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="poc_email"
+            [(ngModel)]="currentContract.poc_email"
+            name="poc_email"
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="poc_phone">Point of Contact Phone #</label>
+          <input
+            type="text"
+            class="form-control"
+            id="poc_phone"
+            [(ngModel)]="currentContract.poc_phone"
+            name="poc_phone"
+          />
+        </div>
+       </div>
+
+       <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="alternate_point_of_contact">Alternate POC</label>
+          <input 
+          type="text" 
+          class="form-control"
+          required
+          name="alternate_point_of_contact"
+          id="alternate_point_of_contact"
+          [(ngModel)]="currentContract.alternate_point_of_contact"
+          >
+        </div>
+<!--                                                  IF THEY DECIDE TO STORE ALTERNATE PHONE AND EMAIL INFO...
+        <div class="form-group col-md-4">
+          <label for="alternate_poc_phone">Alternate POC Number</label>
+          <input
+            class="form-control"
+            id="alternate_poc_phone"
+            required
+            [(ngModel)]="currentContract.alternate_poc_phone"
+            name="alternate_poc_phone"
+          />
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="alternate_poc_email">Alternate POC Email</label>
+          <input
+            class="form-control"
+            id="alternate_poc_email"
+            required
+            [(ngModel)]="currentContract.alternate_poc_email"
+            name="alternate_poc_email"
+          />
+        </div> -->
+      </div>
+       
+       <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="contract_type">Contract Type</label>
+          <input
+            type="text"
+            class="form-control"
+            id="contract_type"
+            [(ngModel)]="currentContract.contract_type"
+            name="contract_type"
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="sub_or_prime">Sub or Prime</label>
+          <select class="form-control" name="sub_or_prime" id="sub_or_prime" [(ngModel)]="currentContract.sub_or_prime">
+            <option value="">--Please choose an option--</option>
+            <option value="Sub">Sub</option>
+            <option value="Prime">Prime</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="ceiling_value">Ceiling Value</label>
+            <input
+              type="text"
+              class="form-control"
+              id="ceiling_value"
+              [(ngModel)]="currentContract.ceiling_value"
+              name="ceiling_value"
+            >
+          </div>
+       </div>
+
+      </form>
+      <button class="badge badge-danger mr-2" (click)="deleteContract()">
+        Delete
+      </button>
+      <button
+        type="submit"
+        class="badge badge-success mr-2"
+        (click)="updateContract()"
+      >
+        Update
+      </button>
+      <button 
+      class="badge badge-info"
+      type="submit"
+      (click)="returnToTable()">
+        Go Back
+      </button>
+      <p>{{ message }}</p>
+<!--      THIS IS GOING TO BE IN ITS OWN COMPONENT NOT SURE ON THE UI YET -->
+      <!-- <label for="add">Add Employee to Contract</label>
+      <select name="" id="" class="form-control col-md-3">
+        <option *ngFor="let employee of employees" value="{{ employee.id }}">{{employee.first_name }} {{ employee.last_name}}</option>
+      </select>
+      <button 
+      type="submit"
+      class="btn btn-primary"
+      (click)="addEmployeeToContract()"
+      >Add Employee To This Contract</button> -->
+    </div>
+  
+    <div *ngIf="!currentContract">
+      <br/>
+      <p>Cannot access this Contract...</p>
+    </div>
+  </div>
+
+ 

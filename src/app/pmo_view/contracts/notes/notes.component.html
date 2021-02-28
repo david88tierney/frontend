@@ -1,0 +1,38 @@
+<div class="container">
+  <div style="margin: auto;">
+    <div *ngIf="currentContract" class="edit-form">
+      <form>
+        <div class="form-group">
+          <label for="notes">Add/ Edit Notes</label>
+          <textarea name="notes"
+           id="notes" 
+           cols="30" 
+           rows="15"
+            class="form-control"
+            [(ngModel)]="currentContract.notes"></textarea>
+        </div>
+      </form>
+      <button
+        type="submit"
+        class="badge badge-success mr-2"
+        (click)="updateContract()"
+      >
+        Update
+      </button>
+      <button 
+      class="badge badge-info"
+      type="submit"
+      (click)="returnToTable()">
+        Go Back
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentContract">
+      <br/>
+      <p>Cannot access this Contract...</p>
+    </div>
+  </div>
+</div>
+
+

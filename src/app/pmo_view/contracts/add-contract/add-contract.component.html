@@ -1,0 +1,209 @@
+<div class="container" *ngIf="content">
+  <header class="jumbotron">
+    <p>{{ content }}</p>
+  </header>
+</div>
+<div class="container" *ngIf="viewChart">
+  <div class="col-xl-12 mt-5 mt-lg-0 d-flex align-items-stretch">
+  </div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="status">Status</label>
+            <select class="form-control" name="status" id="status" [(ngModel)]="contract.status">
+              <option value="">--Please choose an option--</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+       
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="name">Contract Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              required
+              [(ngModel)]="contract.name"
+              name="name"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="short_name">Short name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="short_name"
+              required
+              [(ngModel)]="contract.short_name"
+              name="short_name"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="number">Contract Number</label>
+            <input
+              class="form-control"
+              id="number"
+              required
+              [(ngModel)]="contract.number"
+              name="number"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="contract_vehicle">Contract Vehicle</label>
+            <input 
+            type="text" 
+            class="form-control"
+            [(ngModel)]="contract.contract_vehicle"
+            name="contract_vehicle"
+            >
+          </div>
+          <div class="form-group col-md-4">
+            <label for="POP_begin">POP Begin</label>
+            <input
+              class="form-control"
+              id="POP_begin"
+              type="date"
+              [(ngModel)]="contract.POP_begin"
+              name="POP_begin"
+            />
+          </div>
+  
+          <div class="form-group col-md-4">
+            <label for="POP_end">POP End</label>
+            <input
+              class="form-control"
+              id="POP_end"
+              type="date"
+              [(ngModel)]="contract.POP_end"
+              name="POP_end"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="point_of_contact">Point of Contact</label>
+            <input
+              class="form-control"
+              id="point_of_contact"
+              required
+              [(ngModel)]="contract.point_of_contact"
+              name="point_of_contact"
+            />
+          </div>
+  
+          <div class="form-group col-md-4">
+            <label for="poc_phone">POC Number</label>
+            <input
+              class="form-control"
+              id="poc_phone"
+              required
+              [(ngModel)]="contract.poc_phone"
+              name="poc_phone"
+            />
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="poc_email">POC Email</label>
+            <input
+              class="form-control"
+              id="poc_email"
+              required
+              [(ngModel)]="contract.poc_email"
+              name="poc_email"
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="alternate_point_of_contact">Alternate POC</label>
+            <input 
+            type="text" 
+            class="form-control"
+            required
+            name="alternate_point_of_contact"
+            id="alternate_point_of_contact"
+            [(ngModel)]="contract.alternate_point_of_contact"
+            >
+          </div>
+<!--                                                  IF THEY DECIDE TO STORE ALTERNATE PHONE AND EMAIL INFO...
+          <div class="form-group col-md-4">
+            <label for="alternate_poc_phone">Alternate POC Number</label>
+            <input
+              class="form-control"
+              id="alternate_poc_phone"
+              required
+              [(ngModel)]="contract.alternate_poc_phone"
+              name="alternate_poc_phone"
+            />
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="alternate_poc_email">Alternate POC Email</label>
+            <input
+              class="form-control"
+              id="alternate_poc_email"
+              required
+              [(ngModel)]="contract.alternate_poc_email"
+              name="alternate_poc_email"
+            />
+          </div> -->
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="contract_type">Contract Type</label>
+            <input
+              class="form-control"
+              id="contract_type"
+              required
+              [(ngModel)]="contract.contract_type"
+              name="contract_type"
+            />
+          </div>
+  
+          <div class="form-group col-md-4">
+            <label for="sub_or_prime">Sub or Prime</label>
+            <select class="form-control" name="sub_or_prime" id="sub_or_prime" [(ngModel)]="contract.sub_or_prime">
+              <option value="">--Please choose an option--</option>
+              <option value="Sub">Sub</option>
+              <option value="Prime">Prime</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="ceiling_value">Ceiling Value</label>
+            <input
+              class="form-control"
+              id="ceiling_value"
+              required
+              [(ngModel)]="contract.ceiling_value"
+              name="ceiling_value"
+            />
+          </div>
+        </div>
+          
+  
+      <button (click)="saveContract()" class="btn btn-success mr-4">Add Contract</button>
+      <button 
+      class="btn btn-info"
+      type="submit"
+      (click)="returnToTable()">
+        Go Back
+      </button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>You submitted successfully!</h4>
+        <button class="btn btn-success" (click)="newContract()">Add Another Contract</button>
+      </div>
+    </div>
+  </div>
+  <form>

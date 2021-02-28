@@ -1,0 +1,49 @@
+
+<div class="list row" *ngIf="employees">
+      <div class="col-xl-10" style="padding: 2rem; margin: auto;">
+        <h1 style="display: flex; justify-content: center; padding-bottom: 1rem;">Employee Table</h1>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th>Work Status</th>
+              <th scope="col">Name</th>
+              <th scope="col">Phone #</th>
+              <th scope="col">Position</th>
+              <th scope="col">Clearance</th>
+              <th scope="col">Hire Date</th>
+              <th scope="col">Email</th>
+              <th scope="col">Remarks</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody 
+          *ngFor="let employee of employees; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveEmployee(employee, i)">
+            <tr>
+              <th scope="row">{{ employee.id }}</th>
+              <td>{{employee.status}}</td>
+              <td>{{ employee.prefix }} {{employee.first_name}} {{employee.last_name }} {{employee.suffix }}</td>
+              <td>{{ employee.mobile_phone }}</td>
+              <td>{{ employee.position }}</td>
+              <td>{{ employee.clearance }}</td>
+              <td>{{ employee.hire_date }}</td>
+              <td>{{ employee.rssi_email }}</td>
+              <td>{{ employee.remarks }}</td>
+              <td> <a class="badge badge-warning" routerLink="/employees/{{ employee.id }}">Update</a> </td>
+            </tr>
+          </tbody>
+        </table>
+        <a class="btn btn-primary" routerLink="addEmployee">Add Employee</a>
+  
+      </div>
+    </div>
+
+    <div class="container" *ngIf="content">
+      <header class="jumbotron">
+        <p>{{ content }}</p>
+      </header>
+    </div>
+  
+  

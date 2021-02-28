@@ -1,0 +1,390 @@
+<div class="container" *ngIf="content">
+    <header class="jumbotron">
+      <p>{{ content }}</p>
+    </header>
+</div>
+<!-- IF YOU ARE A PMO YOU HAVE ACCESS TO FORM -->
+<div class="container" *ngIf="viewChart">
+  <div class="col-xl-12 mt-5 mt-lg-0 d-flex align-items-stretch">
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select 
+            class="form-control" 
+            name="status" 
+            id="status" 
+            [(ngModel)]="employee.status">
+              <option value="">--Please choose an option--</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Contract Employee Reports To:</label>
+            <select 
+            class="form-control"
+            name="short_name" 
+            [(ngModel)]="contract.short_name" 
+            id="short_name" 
+            required>
+              <option value="">-Please choose Contract-</option>
+              <option 
+              *ngFor="let contract of contracts" 
+              [ngValue]="contract.short_name"
+              value="{{contract.short_name}}">
+              {{ contract.short_name }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="prefix">Prefix</label>
+            <select class="form-control" name="prefix" id="prefix" [(ngModel)]="employee.prefix">
+              <option value="">If Applicable</option>
+              <option value="">n/a</option>
+              <option value="Mr">Mr</option>
+              <option value="Ms">Ms</option>
+              <option value="Mrs">Mrs</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-3">
+            <label for="first_name">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="first_name"
+  
+              [(ngModel)]="employee.first_name"
+              name="first_name"
+            />
+          </div>
+    
+          <div class="form-group col-md-3">
+            <label for="last_name">Last Name</label>
+            <input
+              class="form-control"
+              id="last_name"
+
+              [(ngModel)]="employee.last_name"
+              name="last_name"
+            />
+          </div>
+  
+          <div class="form-group col-md-3">
+            <label for="suffix">Suffix</label>
+            <select class="form-control" name="suffix" id="suffix" [(ngModel)]="employee.suffix">
+              <option value="">If Applicable</option>
+              <option value="">n/a</option>
+              <option value="Jr">Jr</option>
+              <option value="Sr">Sr</option>
+              <option value="2nd">2nd</option>
+              <option value="3rd">3rd</option>
+              <option value="4th">4th</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="dob">Date Of Birth</label>
+            <input 
+            type="date"
+            class="form-control"
+            id="dob"
+            [(ngModel)]="employee.dob"
+            name="dob"
+            >
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="ssn">Social Security Number</label>
+            <input 
+            type="password"
+            class="form-control"
+            id="ssn"
+            [(ngModel)]="employee.ssn"
+            name="ssn"
+            >
+          </div> 
+        </div> -->
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="address">Address</label>
+            <input 
+            type="text"
+            placeholder="Home Address, City, State, ZIP"
+            class="form-control"
+            id="address"
+            [(ngModel)]="employee.address"
+            name="address"
+            >
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="mobile_phone">Mobile Number</label>
+            <input 
+            type="text"
+            class="form-control"
+            placeholder="If Applicable"
+            id="mobile_phone"
+            [(ngModel)]="employee.mobile_phone"
+            name="mobile_phone">
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="work_phone">Work Phone</label>
+            <input 
+            type="text"
+            class="form-control"
+            placeholder="If Applicable"
+            id="work_phone"
+            [(ngModel)]="employee.work_phone"
+            name="work_phone">
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="home_phone">Home Phone</label>
+            <input 
+            type="text"
+            class="form-control"
+            placeholder="If Applicable"
+            id="home_phone"
+            [(ngModel)]="employee.home_phone"
+            name="home_phone">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="clearance">Clearance</label>
+            <select class="form-control" name="clearance" id="clearance" [(ngModel)]="employee.clearance">
+              <option value="n/a">If Applicable</option>
+              <option value="n/a">n/a</option>
+              <option value="Public Trust">Public Trust</option>
+              <option value="Interim Secret">Interim Secret</option>
+              <option value="Secret">Secret</option>
+              <option value="Interim Top Secret">Interim Top Secret</option>
+              <option value="Top Secret">Top Secret</option>
+              <option value="DCID SCI">DCID SCI</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="clearance_date">Clearance Date</label>
+            <input
+              class="form-control"
+              id="clearance_date"
+              type="date"
+              [(ngModel)]="employee.clearance_date"
+              name="clearance_date"
+            />
+          </div>
+    
+          <div class="form-group col-md-4">
+            <label for="clearance_exp_date">Clearance Expiration Date</label>
+            <input
+              class="form-control"
+              id="clearance_exp_date"
+              type="date"
+              [(ngModel)]="employee.clearance_exp_date"
+              name="clearance_exp_date"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="vacation_accrual_base_date">Vacation Accrual Base Date</label>
+          <input
+            class="form-control"
+            id="vacation_accrual_base_date"
+            type="date"
+            [(ngModel)]="employee.vacation_accrual_base_date"
+            name="vacation_accrual_base_date"
+          />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="position">Position</label>
+            <input
+              class="form-control"
+              id="position"
+
+              [(ngModel)]="employee.position"
+              name="position"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="email">Personal Email</label>
+            <input
+              class="form-control"
+              id="email"
+              placeholder="If Applicable"
+              email
+              [(ngModel)]="employee.email"
+              name="email"
+            />
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="rssi_email">RSSi Email</label>
+            <input
+              class="form-control"
+              id="rssi_email"
+              placeholder="If Applicable"
+              email
+              [(ngModel)]="employee.rssi_email"
+              name="rssi_email"
+            />
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="gov_email">Gov/Site Email</label>
+            <input
+              class="form-control"
+              id="gov_email"
+              placeholder="If Applicable"
+              email
+              [(ngModel)]="employee.gov_email"
+              name="gov_email"
+            />
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="hire_date">Hire Date</label>
+            <input
+              class="form-control"
+              id="hire_date"
+              type="date"
+              [(ngModel)]="employee.hire_date"
+              name="hire_date"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="termination_date">Termination Date</label>
+            <input
+              class="form-control"
+              type="date"
+              id="termination_date"
+              [(ngModel)]="employee.termination_date"
+              name="termination_date"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="work_status">Work Status</label>
+            <select class="form-control" name="work_status" id="work_status" [(ngModel)]="employee.work_status">
+              <option value="">If Applicable</option>
+              <option value="Full Time">Full Time</option>
+              <option value="Part Time">Part Time</option>
+              <option value="Consultant">Consultant</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="salary">Salary</label>
+            <input 
+              class="form-control"
+              id="salary"
+              [(ngModel)]="employee.salary"
+              name="salary"
+            /> 
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="last_pay_change">Last Pay Change</label>
+            <input 
+              class="form-control"
+              id="last_pay_change"
+              type="date"
+              [(ngModel)]="employee.last_pay_change"
+              name="last_pay_change"
+            /> 
+          </div>
+        </div>
+      
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="race">Race</label>
+            <select class="form-control" name="race" id="race" [(ngModel)]="employee.race">
+              <option value="">If Applicable</option>
+              <option value="">Employee doesn't wish to share.</option>
+              <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
+              <option value="Asian">Asian</option>
+              <option value="Black or African American">Black or African American</option>
+              <option value="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
+              <option value="White">White</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="gender">Gender</label>
+            <select class="form-control" name="gender" id="gender" [(ngModel)]="employee.gender">
+              <option value="">Select a Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+ 
+            </select>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="flsa">FLSA</label>
+            <select class="form-control" name="flsa" id="flsa" [(ngModel)]="employee.flsa">
+              <option value="">Select a FLSA</option>
+              <option value="Exempt">Exempt</option>
+              <option value="Non-Exempt">Non Exempt</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="remarks">Remarks</label>
+          <input
+            class="form-control"
+            placeholder="If Applicable"
+            id="remarks"
+            [(ngModel)]="employee.remarks"
+            name="remarks"
+          />
+        </div>
+        <button (click)="saveEmployee()" class="btn btn-success mr-4">Add Employee</button>
+        <button 
+        class="btn btn-info"
+        type="submit"
+        (click)="returnToTable()">
+          Go Back
+        </button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>You submitted successfully!</h4>
+        <button 
+        class="btn btn-info mr-3"
+        type="submit"
+        (click)="returnToTable()">
+          Return to Employee Table
+        </button>
+        <button (click)="newEmployee()" class="btn btn-primary">Add Another Employee</button>
+      </div>
+        <p>{{ message }}</p>
+      </div>
+    
+    
+
+  
+
+  

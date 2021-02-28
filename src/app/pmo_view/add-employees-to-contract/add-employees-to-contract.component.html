@@ -1,0 +1,43 @@
+<div class="container">
+  <form 
+  #bindToContract="ngForm" 
+  (ngSubmit)="bindEmployeeToContract()"
+  class="form-group">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="employee">Select Employee</label>
+      <select 
+      name="employeeId" 
+      [(ngModel)]="selectedEmployee" 
+      class="form-control" required
+      >
+        <option disabled>-Please choose Employee-</option>
+        <option *ngFor="let employee of employees" [ngValue]="employee.id">
+        {{ employee.first_name }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="contract">Select Contract</label>
+      <select 
+      name="contractId" 
+      [(ngModel)]="selectedContract" 
+      class="form-control" 
+      required>
+        <option disabled>-Please choose Contract-</option>
+        <option *ngFor="let contract of contracts" [ngValue]="contract.id">
+        {{ contract.name }}
+        </option>
+      </select>
+    </div>
+  
+  </div>
+    <button 
+    class="btn btn-success"
+    [disabled]="!bindToContract.valid" 
+    type="submit">
+      Add Employee To Contract
+    </button>
+  
+  </form>
+</div>

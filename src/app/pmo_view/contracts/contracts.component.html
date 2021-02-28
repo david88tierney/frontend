@@ -1,0 +1,77 @@
+<div class="list row" *ngIf="contracts">
+    <!-- IF THEY WANT A SEARCH BAR -- WILL HAVE TO TROUBLE SHOOT WHY IT IS NOT PULLING FROM THE DB -->
+     <!-- <div class="col-md-8" style="padding-top: 1rem;">
+       <div class="input-group mb-3">
+         <input
+           type="text"
+           class="form-control"
+           placeholder="Search by Assett"
+           [(ngModel)]="title"
+         />
+         <div class="input-group-append">
+           <button
+             class="btn btn-outline-secondary"
+             type="button"
+             (click)="searchAsset()"
+           >
+             Search
+           </button>
+         </div>
+       </div>
+     </div> -->
+     <div class="col-xl-10" style="padding: 2rem; margin: auto;">
+       <h1 style="display: flex; justify-content: center; padding-bottom: 1rem;">Contracts Table</h1>
+       <table class="table table-bordered">
+         <thead>
+           <tr>
+             <th>Status</th>
+             <th scope="col">Name</th>
+             <th scope="col">Short Name</th>
+             <th scope="col">Contract Number</th>
+             <th>Contract Vehicle</th>
+             <th scope="col">POP Start</th>
+             <th scope="col">POP End</th>
+             <th scope="col">Point of Contract</th>
+             <th scope="col">Phone #</th>
+             <th scope="col">Email</th>
+             <th scope="col">Contract Type</th>
+             <th scope="col">Sub/Prime</th>
+             <th scope="col">Ceiling Value</th>
+             <th>Notes</th>
+             <th scope="col">Action</th>
+           </tr>
+         </thead>
+         <tbody 
+         *ngFor="let contract of contracts; let i = index"
+         [class.active]="i == currentIndex"
+         (click)="setActiveContract(contract, i)">
+           <tr>
+             <td>{{ contract.status }}</td>
+             <th>{{ contract.name }}</th>
+             <th>{{ contract.short_name }}</th>
+             <td>{{ contract.number }}</td>
+             <td>{{ contract.contract_vehicle }}</td>
+             <td>{{ contract.POP_begin }}</td>
+             <td>{{ contract.POP_end }}</td>
+             <td>{{ contract.point_of_contact }}</td>
+             <td>{{ contract.poc_phone }}</td>
+             <td>{{ contract.poc_email }}</td>
+             <td>{{ contract.contract_type }}</td>
+             <td>{{ contract.sub_or_prime }}</td>
+             <td>{{ contract.ceiling_value }}</td>
+             <td><a class="btn btn-primary" routerLink="/contracts/notes/{{ contract.id }}">View/Edit Notes</a></td>
+             <td> <a class="badge badge-warning" routerLink="/contracts/{{ contract.id }}">Update</a> </td>
+           </tr>
+         </tbody>
+       </table>
+       <a class="btn btn-primary" routerLink="addContract">Add Contract</a>
+
+     </div>
+   </div>
+
+   <div class="container" *ngIf="content">
+    <header class="jumbotron">
+      <p>{{ content }}</p>
+    </header>
+  </div>
+ 
